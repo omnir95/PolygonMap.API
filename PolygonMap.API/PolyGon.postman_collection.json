@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "d5b3f820-95da-40a1-9674-257ab6c294ba",
+		"name": "PolyGon",
+		"description": "this request to deal with google map poygon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getShapes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"City Center triangle\",\n\t\"fixedLongitude\":31.9038,\n\t\"fixedLatitude\":35.2034,\n\t\"points\":[\n\t{\n\t\t\"Longitude\":35.2622822383172,\n\t\t\"Latitude\":31.9635641446775\n\t},\n\t{\n\t\t\"Longitude\":35.2512959101922,\n\t\t\"Latitude\":31.953223483017243\n\t},\n\t{\n\t\t\"Longitude\":35.26966367752618,\n\t\t\"Latitude\":31.953660435940858\n\t}\n\t\n\t]\n\t\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:59444/GetAllShapeAsync",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"GetAllShapeAsync"
+					]
+				},
+				"description": "a shape containt a list of points and list of polygon\nlist of point represent the first point for polygon \nany despplacment on these points make new polygon"
+			},
+			"response": []
+		},
+		{
+			"name": "update Polygon",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"polygonID\":1,\n    \"name\": \"City Center triangle\",\n    \"realLongitude\": 31.9038,\n    \"realLatitude\": 35.5034,\n    \"points\":\"{\\\"Latitude\\\":31.961758254769403,\\\"Longitude \\\":35.25919233353204},{\\\"Latitude\\\":31.955204320513342,\\\"Longitude \\\":35.26743207962579}\"\n \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:59444/UpdatePolygonByIdAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"UpdatePolygonByIdAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add PolyGon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/javascript",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ShapeID\":1,\n\t\"Name\":\"Triangle\",\n    \"realLongitude\": 31.9038,\n    \"realLatitude\": 35.5034,\n    \"points\":\"{\\\"Latitude\\\":31.961758254769403,\\\"Longitude \\\":35.25919233353204},{\\\"Latitude\\\":31.955204320513342,\\\"Longitude \\\":35.26743207962579}\"\n}",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:59444/AddPolyGon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"AddPolyGon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPolygonTodraw",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:59444/CalPointsWithNewCenterAsync/\"new city center\"/1/31.9038/35.2034",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"CalPointsWithNewCenterAsync",
+						"\"new city center\"",
+						"1",
+						"31.9038",
+						"35.2034"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePolygogn",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:59444/DeletePolygonByIdAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"DeletePolygonByIdAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetShapeByIdAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:59444/GetShapeByIdAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59444",
+					"path": [
+						"GetShapeByIdAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
