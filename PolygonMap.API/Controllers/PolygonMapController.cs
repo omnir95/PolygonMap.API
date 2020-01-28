@@ -34,10 +34,7 @@ namespace PolygonMap.API.Controllers
                 if (shape is null)
                     return NotFound();
                 var polygon = await _polygonMapSupervisor.AddPolygonAsync(input);
-                if (shape.Polygons is null)
-                    shape.Polygons = new List<PolygonApiModel>() { polygon };
-                else
-                    shape.Polygons.Add(polygon);
+             
                 await _polygonMapSupervisor.UpdateShapeAsync(shape);
                 return Ok(polygon);
             }
@@ -119,11 +116,7 @@ namespace PolygonMap.API.Controllers
                     Points = JsonConvert.SerializeObject(Shape.Points, Formatting.Indented)
                 };
                 var polygon = await _polygonMapSupervisor.AddPolygonAsync(newPolygonApiModel);
-                if (Shape.Polygons is null)
-                    Shape.Polygons = new List<PolygonApiModel>() { polygon };
-                else
-                    Shape.Polygons.Add(polygon);
-                await _polygonMapSupervisor.UpdateShapeAsync(Shape);
+           
                 return Ok(polygon);
             }
             catch (Exception ex)
